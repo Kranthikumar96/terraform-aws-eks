@@ -7,7 +7,7 @@ terraform {
   }
 
   backend "s3" {
-    bucket = "ks-s3-testing-remote-state-dev "
+    bucket = "ks-s3-testing-remote-state-dev"
     key    = "roboshop-dev-vpc"
     region = "us-east-1"
     dynamodb_table = "ks-s3-testing"
