@@ -7,10 +7,10 @@ terraform {
   }
 
   backend "s3" {
-    bucket = "kkf-s3-testing-remote-state-dev"
+    bucket = "ks-s3-testing-remote-state-dev"
     key    = "roboshop-dev-bastion"
     region = "us-east-1"
-    dynamodb_table = "kkf-s3-testing"
+    dynamodb_table = "ks-s3-testing"
     encrypt        = true
     use_lockfile = true
   }
