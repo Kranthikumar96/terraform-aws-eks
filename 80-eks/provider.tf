@@ -8,7 +8,7 @@ terraform {
 
   backend "s3" {
     bucket = "ks-s3-testing-remote-state-dev"
-    key    = "roboshop-dev-ingress-alb"
+    key    = "roboshop-dev-eks"
     region = "us-east-1"
     dynamodb_table = "ks-s3-testing"
     encrypt        = true
