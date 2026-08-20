@@ -65,7 +65,7 @@ pipeline {
                 }
             }
         }
-        // Down stream job
+        /* // Down stream job
         stage('Trigger SG') {
             steps {
                 script {
@@ -74,7 +74,7 @@ pipeline {
                       wait: false // VPC will not wait for SG pipeline completion
                 }
             }
-        }
+        } */
     }
 
     post { 
