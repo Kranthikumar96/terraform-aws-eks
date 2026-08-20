@@ -99,7 +99,7 @@ pipeline {
                 script {
                     build job: '70-frontend-alb',
                         propagate: true,
-                        wait: false
+                        wait: true
                 }
             }
         }
