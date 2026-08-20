@@ -60,43 +60,47 @@ pipeline {
                 }
             }
         }
-        stage('Bastion EKS ACM ALB') {
+        stage('Bastion EKS ACM') {
             parallel {
+
                 stage('Trigger Bastion') {
                     steps {
                         script {
-                            build job: '20-bastion', 
-                            propagate: false,  // even SG fails VPC will not be effected
-                            wait: false // VPC will not wait for SG pipeline completion
+                            build job: '20-bastion',
+                                propagate: false,
+                                wait: true
                         }
                     }
                 }
+
                 stage('Trigger EKS') {
                     steps {
                         script {
-                            build job: '80-eks', 
-                            propagate: false,  // even SG fails VPC will not be effected
-                            wait: false // VPC will not wait for SG pipeline completion
+                            build job: '80-eks',
+                                propagate: false,
+                                wait: true
                         }
                     }
                 }
-                stage('ACM ALB') {
+
+                stage('ACM') {
                     steps {
                         script {
-                            build job: '60-acm', 
-                            propagate: false,  // even SG fails VPC will not be effected
-                            wait: false // VPC will not wait for SG pipeline completion
+                            build job: '60-acm',
+                                propagate: true,
+                                wait: true
                         }
                     }
-                    stage('ALB') {
-                        steps {
-                            script {
-                                build job: '70-frontend-alb', 
-                                propagate: false,  // even SG fails VPC will not be effected
-                                wait: false // VPC will not wait for SG pipeline completion
-                            }
-                        }
-                    }  
+                }
+            }
+        }
+
+        stage('ALB') {
+            steps {
+                script {
+                    build job: '70-frontend-alb',
+                        propagate: true,
+                        wait: true
                 }
             }
         }
