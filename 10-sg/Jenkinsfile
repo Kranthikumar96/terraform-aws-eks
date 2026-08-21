@@ -67,7 +67,7 @@ pipeline {
                         script {
                             build job: '20-bastion',
                                 propagate: false,
-                                wait: false
+                                wait: true
                         }
                     }
                 }
@@ -77,7 +77,7 @@ pipeline {
                         script {
                             build job: '80-eks',
                                 propagate: false,
-                                wait: false
+                                wait: true
                         }
                     }
                 }
@@ -86,8 +86,8 @@ pipeline {
                     steps {
                         script {
                             build job: '60-acm',
-                                propagate: true,
-                                wait: false
+                                propagate: false,
+                                wait: true
                         }
                     }
                 }
